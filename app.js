@@ -2,7 +2,7 @@ var express = require("express");
 var app =express();
 var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
-
+var PORT = process.env.PORT || 3000;
 
 mongoose.connect("mongodb://localhost/memesDB");
 
@@ -116,7 +116,7 @@ app.get("*",function(req,res)
     res.status(404).send("Invalid Request");
 });
 
-app.listen(process.enc.PORT || 3000,function()
+app.listen(PORT,function()
 {
     console.log("XMeme Website server has started");
 });
