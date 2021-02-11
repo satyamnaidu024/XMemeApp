@@ -4,7 +4,8 @@ var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
 var PORT = process.env.PORT || 3000;
 
-mongoose.connect("mongodb://localhost/memesDB");
+//mongoose.connect("mongodb://localhost/memesDB");
+mongoose.connect("mongodb+srv://satyamnaidu:satyamnaidu@cluster0.dcljf.mongodb.net/test?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true });
 
 //schema setup
 var memeSchema = new mongoose.Schema({
