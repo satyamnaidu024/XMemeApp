@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Welcome to XMeme</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    </head>
+    <body>
+        
+        
+        <div>
+                    <h1>Welcome to XMeme App</h1>
+                    <p>Submit you best memes and lets see</p>
+                    
+                </div>      
+
+
+<div class="container">
+    <div class="row">
+        <div style="width: 50%; margin: 50px auto;">
+            <form action="/memes" method="POST">
+                <div class="form-group">
+                    <input class="form-control" type="text" name="name" placeholder="Enter Full Name">
+                </div>
+                
+                <div class="form-group">
+                    <input class="form-control" type="text" name="caption" placeholder="Enter Caption">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="memeurl" placeholder="Enter Meme URL">
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-large btn-danger btn-block">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div> 
+    </div>
+    
+</div>  
+
+
+    
+    <div class="text-center" style="display:flex; flex-wrap:wrap;"></div>
+    <%var count=0; %>
+        <% memes.forEach(function(meme){ %>
+            <% count++; %>
+                <div class="thumbnail">
+                    <div class="caption">
+                        <h3><%=count%>. Name:<%= meme.name %> </h4>
+                        <h3> Caption:<%= meme.caption %> </h4>
+                        <h3>Meme ID:<%= meme._id %></h4>
+                    </div>
+                    <img src="<%= meme.memeurl %>" alt="Image not found" width="500" height="500">
+                    
+                    <p>
+                        <a href="/memes/<%= meme._id %>" class="btn btn-primary">More info</a>
+                    </p>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+1.
+
+
+curl -H "Accept: application/json" --location --request POST 'localhost:3000/memes' \
+
+--header 'Content-Type: application/json' \
+ --data-raw '{
+
+"name": "ashok kumar",
+"caption": "This is a meme",
+"memeurl": "https://images.pexels.com/photos/3573382/pexels-photo-3573382.jpeg"
+}'
+
+
+
+curl --location --request POST 'localhost:3000/memes' \
+
+--header 'Content-Type: application/json' \
+ --data-raw '{
+
+"name": "alok kumar",
+"caption": "This is a meme",
+"memeurl": "https://images.pexels.com/photos/3573382/pexels-photo-3573382.jpeg"
+}'
+
+
+2.
+
+
+curl -H "Accept: application/json" --location --request GET 'localhost:3000/memes'
+
+curl --location --request GET 'localhost:3000/memes'
