@@ -2,6 +2,8 @@
 <html>
     <head>
         <title>Single Meme</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    
         </head>
     <body>
 
@@ -9,6 +11,13 @@
     <div class="caption">
         <h3> Name:<%= meme.name %> </h4>
         <h3>Caption:<%= meme.caption %> </h4>
+
+            <a href="/memes" class="btn btn-primary">Go to Home Page</a>
+            <a href="/memes/<%= meme._id %>/edit" class="btn btn-primary">Edit</a>
     </div>
-    <img src="<%= meme.memeurl %>" alt="Image not found" width="500" height="500">
+    <img src="<%= meme.memeurl %>" alt="Image not found" onerror="this.onerror=null;this.src='https://bitsofco.de/content/images/2018/12/broken-1.png';" width="500" height="500">
 </div>
+
+
+ </body>
+ </html>

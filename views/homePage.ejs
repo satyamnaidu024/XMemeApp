@@ -37,9 +37,6 @@
     </div>
     
 </div>  
-
-
-    
     <div class="text-center" style="display:flex; flex-wrap:wrap;"></div>
     <%var count=0; %>
         <% memes.forEach(function(meme){ %>
@@ -49,12 +46,11 @@
                         <h3><%=count%>. Name:<%= meme.name %> </h4>
                         <h3> Caption:<%= meme.caption %> </h4>
                         <h3>Meme ID:<%= meme._id %></h4>
-                    </div>
-                    <img src="<%= meme.memeurl %>" alt="Image not found" width="500" height="500">
+                        <a href="/memes/<%= meme._id %>" class="btn btn-primary">More Info</a>
+                        <a href="/memes/<%= meme._id %>/edit" class="btn btn-primary">Edit Info</a>
                     
-                    <p>
-                        <a href="/memes/<%= meme._id %>" class="btn btn-primary">More info</a>
-                    </p>
+                    </div>
+                    <img src="<%= meme.memeurl %>" alt="Image not found" onerror="this.onerror=null;this.src='https://bitsofco.de/content/images/2018/12/broken-1.png';" width="500" height="500">
                 </div>
             </div>
         <% }); %>

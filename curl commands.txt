@@ -29,3 +29,7 @@ curl --location --request POST 'xmemeapp024.herokuapp.com/memes' \
 curl -H "Accept: application/json" --location --request GET 'xmemeapp024.herokuapp.com/memes'
 
 curl --location --request GET 'xmemeapp024.herokuapp.com/memes'
+
+
+
+3.curl -H "Accept: application/json" --location --request GET 'xmemeapp024.herokuapp.com/memes/60267415c2277c00040ead57'

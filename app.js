@@ -2,6 +2,7 @@ var express = require("express");
 var app =express();
 var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
+var methodOverride = require("method-override");
 var PORT = process.env.PORT || 3000;
 
 //mongoose.connect("mongodb://localhost/memesDB");
@@ -35,6 +36,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 
 app.set("view engine", "ejs");
+app.use(methodOverride("_method"));
 
 
 app.get("/",function(req,res)
@@ -70,7 +72,7 @@ app.get("/memes/:id",function(req,res){
         if(err)
         {
             console.log(err);
-            res.status(err.status).render("error");
+            res.status(404).render("error");
         }
         else
         {
@@ -120,6 +122,37 @@ app.post("/memes",function(req,res){
                }  
         }
      });
+});
+
+app.get("/memes/:id/edit",function(req,res)
+{
+    Meme.findById(req.params.id,function(err,foundMeme){
+        if(err)
+        {
+            console.log(err);
+            res.status(404).render("error");
+        }
+        else
+        {
+            res.render("editMeme",{meme:foundMeme});
+        }
+    })
+    
+});
+
+app.put("/memes/:id",function(req,res)
+{
+    Meme.findByIdAndUpdate(req.params.id,req.body.meme,function(err,updatedMeme){
+        if(err)
+        {
+            res.redirect("error");
+        }
+        else
+        {   console.log(req.params.caption); 
+            console.log(updatedMeme);   
+            res.redirect("/memes/"+req.params.id);
+        }
+        })
 });
 
 app.get("*",function(req,res)
