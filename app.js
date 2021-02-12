@@ -74,7 +74,15 @@ app.get("/memes/:id",function(req,res){
         }
         else
         {
+            if(req.header('Accept').includes('application/json')){
+                foundMeme = JSON.parse(JSON.stringify(foundMeme).split('"_id":').join('"id":'));
+                foundMeme = JSON.parse(JSON.stringify(foundMeme).split('"memeurl":').join('"url":'));
+                res.send(foundMeme);
+               }
+               else{
+
             res.render("singlememe",{meme:foundMeme});
+               }
         }
     });
 });
