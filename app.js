@@ -12,7 +12,7 @@ var memeSchema = new mongoose.Schema({
     name : String,
     caption:String,
     memeurl:String
-});
+},{ versionKey: false });
 
 var Meme = mongoose.model("Meme",memeSchema);
 
@@ -52,6 +52,8 @@ app.get("/memes",function(req,res){
         } else
         {
             if(req.header('Accept').includes('application/json')){
+                allMemes = JSON.parse(JSON.stringify(allMemes).split('"_id":').join('"id":'));
+                allMemes = JSON.parse(JSON.stringify(allMemes).split('"memeurl":').join('"url":'));
                 res.send(allMemes);
                }else{
                 res.render("homePage",{memes:allMemes});
@@ -114,7 +116,7 @@ app.post("/memes",function(req,res){
 
 app.get("*",function(req,res)
 {
-    res.status(404).send("Invalid Request");
+    res.status(404).render("error");
 });
 
 app.listen(PORT,function()

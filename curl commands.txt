@@ -1,19 +1,19 @@
 1.
 
 
-curl -H "Accept: application/json" --location --request POST 'localhost:3000/memes' \
+curl -H "Accept: application/json" --location --request POST 'xmemeapp024.herokuapp.com/memes' \
 
 --header 'Content-Type: application/json' \
  --data-raw '{
 
-"name": "ashok kumar",
+"name": "alok kumar",
 "caption": "This is a meme",
 "memeurl": "https://images.pexels.com/photos/3573382/pexels-photo-3573382.jpeg"
 }'
 
 
 
-curl --location --request POST 'localhost:3000/memes' \
+curl --location --request POST 'xmemeapp024.herokuapp.com/memes' \
 
 --header 'Content-Type: application/json' \
  --data-raw '{
@@ -26,7 +26,6 @@ curl --location --request POST 'localhost:3000/memes' \
 
 2.
 
+curl -H "Accept: application/json" --location --request GET 'xmemeapp024.herokuapp.com/memes'
 
-curl -H "Accept: application/json" --location --request GET 'localhost:3000/memes'
-
-curl --location --request GET 'localhost:3000/memes'
+curl --location --request GET 'xmemeapp024.herokuapp.com/memes'
