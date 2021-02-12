@@ -9,13 +9,12 @@
 <div class="container">
     <div class="row">
         <div style="width: 50%; margin: 50px auto;">
-            <form action="/memes/<%=meme._id%>?_method=PUT" method="POST">
-                
+            <form action="/memes/<%=meme._id%>?_method=PATCH" method="POST">
                 <div class="form-group">
-               New Caption     <input class="form-control" type="text" name="meme[caption]" placeholder="Update Caption" value="<%=meme.caption%>">
+               New Caption     <input class="form-control" type="text" name="caption" placeholder="Update Caption" value="<%=meme.caption%>">
                 </div>
                 <div class="form-group">
-                    New Meme URL  <input class="form-control" type="text" name="meme[memeurl]" placeholder="Update Meme URL" value="<%=meme.memeurl%>">
+                    New Meme URL  <input class="form-control" type="text" name="memeurl" placeholder="Update Meme URL" value="<%=meme.memeurl%>">
                 </div>
                 <div class="form-group">
                     <button class="btn btn-large btn-danger btn-block">Make Update</button>

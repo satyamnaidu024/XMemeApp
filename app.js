@@ -140,19 +140,37 @@ app.get("/memes/:id/edit",function(req,res)
     
 });
 
-app.put("/memes/:id",function(req,res)
+app.patch("/memes/:id",function(req,res)
 {
-    Meme.findByIdAndUpdate(req.params.id,req.body.meme,function(err,updatedMeme){
-        if(err)
-        {
-            res.redirect("error");
-        }
-        else
-        {   console.log(req.params.caption); 
-            console.log(updatedMeme);   
-            res.redirect("/memes/"+req.params.id);
-        }
+    // Meme.findByIdAndUpdate(req.params.id,req.body.meme,function(err,updatedMeme){
+    //     if(err)
+    //     {
+    //         res.redirect("error");
+    //     }
+    //     else
+    //     {   console.log(req.params.caption); 
+    //         console.log(updatedMeme);   
+    //         res.redirect("/memes/"+req.params.id);
+    //     }
+    //     })
+    
+        var caption = req.body.caption;
+        var memeurl = req.body.memeurl;
+    Meme.findById(req.params.id,function(err,data){
+        data.caption = caption?caption:data.caption;
+        data.memeurl = memeurl?memeurl:data.memurl;
+        data.save(function(err){
+            if(err)
+            {
+                res.redirect("error");
+            }
+            else
+            {
+                res.redirect("/memes/"+req.params.id);
+                console.log("Meme has been updated successfully");
+            }
         })
+    })
 });
 
 app.get("*",function(req,res)
